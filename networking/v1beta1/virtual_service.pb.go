@@ -154,12 +154,13 @@ package v1beta1
 import (
 	encoding_binary "encoding/binary"
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
-	types "github.com/gogo/protobuf/types"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
 	math "math"
 	math_bits "math/bits"
+
+	proto "github.com/gogo/protobuf/proto"
+	types "github.com/gogo/protobuf/types"
+	_ "istio.io/gogo-genproto/googleapis/google/api"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2288,7 +2289,7 @@ type HTTPRedirect struct {
 	// Types that are valid to be assigned to RedirectPort:
 	//	*HTTPRedirect_Port
 	//	*HTTPRedirect_DerivePort
-	RedirectPort isHTTPRedirect_RedirectPort `protobuf_oneof:"redirect_port"`
+	RedirectPort isHTTPRedirect_RedirectPort `protobuf_oneof:"redirect_port" json:"-"`
 	// On a redirect, overwrite the scheme portion of the URL with this value.
 	// For example, `http` or `https`.
 	// If unset, the original scheme will be used.
@@ -2526,7 +2527,7 @@ type StringMatch struct {
 	//	*StringMatch_Exact
 	//	*StringMatch_Prefix
 	//	*StringMatch_Regex
-	MatchType            isStringMatch_MatchType `protobuf_oneof:"match_type"`
+	MatchType            isStringMatch_MatchType `protobuf_oneof:"match_type" json:"-"`
 	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
 	XXX_unrecognized     []byte                  `json:"-"`
 	XXX_sizecache        int32                   `json:"-"`
@@ -3072,7 +3073,7 @@ type HTTPFaultInjection_Delay struct {
 	// Types that are valid to be assigned to HttpDelayType:
 	//	*HTTPFaultInjection_Delay_FixedDelay
 	//	*HTTPFaultInjection_Delay_ExponentialDelay
-	HttpDelayType isHTTPFaultInjection_Delay_HttpDelayType `protobuf_oneof:"http_delay_type"`
+	HttpDelayType isHTTPFaultInjection_Delay_HttpDelayType `protobuf_oneof:"http_delay_type" json:"-"`
 	// Percentage of requests on which the delay will be injected.
 	Percentage           *Percent `protobuf:"bytes,5,opt,name=percentage,proto3" json:"percentage,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -3232,7 +3233,7 @@ type HTTPFaultInjection_Abort struct {
 	//	*HTTPFaultInjection_Abort_HttpStatus
 	//	*HTTPFaultInjection_Abort_GrpcStatus
 	//	*HTTPFaultInjection_Abort_Http2Error
-	ErrorType isHTTPFaultInjection_Abort_ErrorType `protobuf_oneof:"error_type"`
+	ErrorType isHTTPFaultInjection_Abort_ErrorType `protobuf_oneof:"error_type" json:"-"`
 	// Percentage of requests to be aborted with the error code provided.
 	Percentage           *Percent `protobuf:"bytes,5,opt,name=percentage,proto3" json:"percentage,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
